@@ -1,3 +1,5 @@
+# Deploy RedwoodJS Web Side with Cloudflare Pages
+
 [Cloudflare Pages](https://pages.cloudflare.com/) is a Jamstack platform for frontend developers to collaborate and deploy websites. It's a lot like `{{ insert_favorite_Jamstack_host }}`. Simply connect to a GitHub repo, supply the necessary build commands and publish directories, and deploy your site to the world with just `git push`.
 
 At this time it is not yet possible to [deploy the Redwood `api` with Cloudflare Workers](https://community.redwoodjs.com/t/running-redwoodjs-on-cloudflare-workers/2013/2). However, we can simply [delete the `api` directory](https://redwoodjs.com/cookbook/disable-api-database#remove-the-api-directory) and deploy just the `web` side.
