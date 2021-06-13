@@ -2,7 +2,7 @@
 
 [Cloudflare Pages](https://pages.cloudflare.com/) is a Jamstack platform for frontend developers to collaborate and deploy websites. It's a lot like `{{ insert_favorite_Jamstack_host }}`. Simply connect to a GitHub repo, supply the necessary build commands and publish directories, and deploy your site to the world with just `git push`.
 
-At this time it is not yet possible to [deploy the Redwood `api` with Cloudflare Workers](https://community.redwoodjs.com/t/running-redwoodjs-on-cloudflare-workers/2013/2). However, we can simply [delete the `api` directory](https://redwoodjs.com/cookbook/disable-api-database#remove-the-api-directory) and deploy just the `web` side.
+At this time it is not yet possible to [deploy the Redwood `api` with Cloudflare Workers](https://community.redwoodjs.com/t/running-redwoodjs-on-cloudflare-workers/2013/2). However, we can simply [delete the `api` directory](https://redwoodjs.com/cookbook/disable-api-database) and deploy just the `web` side.
 
 ## Create a Redwood App
 
@@ -13,13 +13,13 @@ yarn create redwood-app redwood-cloudflare-pages
 cd redwood-cloudflare-pages
 ```
 
-## Delete `api` directory
+### Delete `api` directory
 
 ```bash
 rm -rf api
 ```
 
-## Generate home page
+### Generate home page
 
 ```bash
 yarn rw g page home /
@@ -40,7 +40,7 @@ const HomePage = () => {
 export default HomePage
 ```
 
-## Start development server
+### Start development server
 
 ```bash
 yarn rw dev
@@ -50,7 +50,11 @@ yarn rw dev
 
 ## Create GitHub Repo
 
-Create a [blank repository](https://repo.new/) on GitHub with the same name as your Redwood project. Initialize a git repo in your newly created Redwood project.
+Create a [blank repository](https://repo.new/) on GitHub with the same name as your Redwood project.
+
+### Initialize repository
+
+Initialize a git repo in your newly created Redwood project.
 
 ```bash
 git init
@@ -59,12 +63,21 @@ git commit -m "Nailed it"
 git branch -M main
 ```
 
+### Add remote to project
+
 Make sure to use your own repo when setting the remote.
 
 ```bash
 git remote add origin https://github.com/ajcwebdev/redwood-cloudflare-pages.git
+```
+
+### Push to main
+
+```bash
 git push -u origin main
 ```
+
+## Connect GitHub repo to Cloudflare Pages
 
 Sign up for [Cloudflare Pages](https://pages.cloudflare.com/).
 
@@ -82,7 +95,9 @@ Your project name and production branch will be set automatically.
 
 ![04-blank-build-settings](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/62o3bczyjj7qrco8x1qi.png)
 
-The build settings are blank. Enter `yarn rw build web` for the build command and `web/dist` for the published output.
+The build settings are blank. Enter:
+* `yarn rw build web` for the build command
+* `web/dist` for the build output directory
 
 ![05-redwood-build-commands](https://dev-to-uploads.s3.amazonaws.com/uploads/articles/ev5cv0w59kawhbagre21.png)
 
